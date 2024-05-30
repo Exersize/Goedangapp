@@ -44,7 +44,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.stockInput.setOnClickListener{
-            replaceFragment(StockFragment())
+            replaceFragment(StockInputFragment())
 
             // untuk menonaktifkan item lain saat stockInput aktif
             binding.bottomNavigationView.selectedItemId = R.id.fab
