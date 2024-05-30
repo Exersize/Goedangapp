@@ -43,9 +43,16 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+        binding.stockInput.setOnClickListener{
+            replaceFragment(StockFragment())
+
+            // untuk menonaktifkan item lain saat stockInput aktif
+            binding.bottomNavigationView.selectedItemId = R.id.fab
+        }
 
     }
 
+    // Untuk ganti fragment di main screen
     private fun replaceFragment(fragment: Fragment) {
         val fragmentManager: FragmentManager = supportFragmentManager
         val fragmentTransaction: FragmentTransaction = fragmentManager.beginTransaction()
