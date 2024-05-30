@@ -22,21 +22,6 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".StockOutActivity"
-            android:exported="false" />
-        <activity
-            android:name=".StockInActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ProfileActivity"
-            android:exported="false" />
-        <activity
-            android:name=".InventoryActivity"
-            android:exported="false" />
-        <activity
-            android:name=".SalesActivity"
-            android:exported="false" />
-        <activity
             android:name=".MainActivity"
             android:exported="true" />
     </application>
