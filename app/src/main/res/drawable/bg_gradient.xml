@@ -5,6 +5,6 @@
         android:endColor="@color/white"
         android:centerColor="@color/white"
         android:startColor="@color/gray"
-        android:centerY="0.40"
+        android:centerY="0.30"
         android:type="linear" />
 </shape>
