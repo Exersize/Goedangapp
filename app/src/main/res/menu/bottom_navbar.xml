@@ -3,11 +3,11 @@
 
     <item
         android:id="@+id/dashboard"
-        android:title="Dashboard"
+        android:title="@string/dashboard"
         android:icon="@drawable/dashboard_icon"/>
     <item
         android:id="@+id/sales"
-        android:title="Sales"
+        android:title="@string/sales"
         android:icon="@drawable/sales_icon"/>
     <item
         android:id="@+id/fab"
@@ -15,10 +15,10 @@
         android:title="" />
     <item
         android:id="@+id/stock"
-        android:title="Stock"
+        android:title="@string/stock"
         android:icon="@drawable/icon_stock"/>
     <item
         android:id="@+id/profile"
-        android:title="Profile"
+        android:title="@string/profile"
         android:icon="@drawable/profile_icon"/>
 </menu>

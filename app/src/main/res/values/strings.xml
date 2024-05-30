@@ -3,4 +3,9 @@
     <string name="sign_in_hero1">Welcome To</string>
     <string name="sign_in_hero2">goedang.</string>
     <string name="sign_in">Sign In</string>
+    <string name="dashboard">Dashboard</string>
+    <string name="sales">Sales</string>
+    <string name="stock">Stock</string>
+    <string name="profile">Profile</string>
+    <string name="add_product">Tambah Produk</string>
 </resources>
