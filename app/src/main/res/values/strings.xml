@@ -8,6 +8,10 @@
     <string name="stock">Stock</string>
     <string name="profile">Profile</string>
     <string name="add_product">Tambah Produk</string>
+    <string name="cabai">Cabai</string>
+    <string name="quantity">QTY: 27 KG</string>
+    <string name="average">AVG: 28 KG</string>
+    <string name="idbarang">ID:123131</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Tes</string>
 </resources>
