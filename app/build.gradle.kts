@@ -29,6 +29,7 @@ android {
 
     buildFeatures{
         viewBinding = true
+        dataBinding = true
     }
 
     compileOptions {
@@ -42,6 +43,10 @@ android {
 
 dependencies {
 
+
+    implementation("androidx.activity:activity-ktx:1.3.1")
+    implementation("androidx.databinding:databinding-runtime:4.2.1")
+    implementation("com.github.bumptech.glide:glide:4.16.0")
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
