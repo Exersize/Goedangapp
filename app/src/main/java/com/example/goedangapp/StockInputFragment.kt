@@ -5,55 +5,57 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.ViewParent
+import android.widget.TableLayout
+import androidx.viewpager2.widget.ViewPager2
+import com.example.goedangapp.databinding.FragmentStockInputBinding
+import com.example.goedangapp.util.PagerAdapter
+import com.google.android.material.tabs.TabLayout
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [StockInputFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
 class StockInputFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    private  var _binding: FragmentStockInputBinding? = null
+    private val binding get() = _binding!!
+    private lateinit var adapter: PagerAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_stock_input, container, false)
+    ): View {
+        _binding = FragmentStockInputBinding.inflate(inflater, container, false)
+        setupViewPagerAndTabs()
+        return binding.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment StockInputFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            StockInputFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
+    private fun setupViewPagerAndTabs() {
+        adapter = PagerAdapter(childFragmentManager, lifecycle)
+        binding.viewPager2.adapter = adapter
+
+        binding.stockInputTab.addOnTabSelectedListener(object: TabLayout.OnTabSelectedListener{
+            override fun onTabSelected(tab: TabLayout.Tab) {
+                binding.viewPager2.currentItem = tab.position
             }
+
+            override fun onTabUnselected(p0: TabLayout.Tab?) {
+
+            }
+
+            override fun onTabReselected(p0: TabLayout.Tab?) {
+
+            }
+
+        })
+        binding.viewPager2.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
+            override fun onPageSelected(position: Int) {
+                super.onPageSelected(position)
+                binding.stockInputTab.selectTab(binding.stockInputTab.getTabAt(position))
+            }
+        })
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }
