@@ -29,10 +29,9 @@
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/item_input_in"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-            android:layout_width="match_parent"
+            android:layout_width="290dp"
             android:layout_height="wrap_content"
             android:hint="Select item"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/text_item">
 
@@ -43,6 +42,18 @@
                 android:inputType="none" />
 
         </com.google.android.material.textfield.TextInputLayout>
+
+
+        <ImageButton
+            android:id="@+id/imageButton"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/baseline_add_24"
+            app:layout_constraintBottom_toBottomOf="@+id/item_input_in"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/item_input_in"
+            app:layout_constraintTop_toTopOf="@+id/item_input_in" />
 
         <TextView
             android:id="@+id/text_quantity"
@@ -173,28 +184,28 @@
 
         <Button
             android:id="@+id/button_cancel"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:text="Cancel"
-            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-            app:strokeColor="@color/black"
             android:textColor="@color/black"
             app:cornerRadius="24dp"
-
             app:layout_constraintBottom_toBottomOf="parent"
+
             app:layout_constraintEnd_toStartOf="@+id/button_save"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/total_input_in" />
+            app:layout_constraintTop_toBottomOf="@+id/total_input_in"
+            app:strokeColor="@color/black" />
 
         <Button
             android:id="@+id/button_save"
+            style="@style/Widget.MaterialComponents.Button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:text="Save"
-            style="@style/Widget.MaterialComponents.Button"
             app:cornerRadius="24dp"
 
             app:layout_constraintBottom_toBottomOf="parent"
