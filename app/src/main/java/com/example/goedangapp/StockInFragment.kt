@@ -13,10 +13,10 @@ import com.example.goedangapp.databinding.FragmentStockInBinding
 
 class StockInFragment : Fragment() {
 
-    private var _binding : FragmentStockInBinding? = null
+    private var _binding: FragmentStockInBinding? = null
     private val binding get() = _binding!!
-    private var placeholder : List<String> = listOf("Cabe", "Bawang", "Kacang")
-    private lateinit var  autoCompleteTextView: AutoCompleteTextView
+    private var placeholder: List<String> = listOf("Cabe", "Bawang", "Kacang")
+    private lateinit var autoCompleteTextView: AutoCompleteTextView
     private lateinit var adapterItems: ArrayAdapter<String>
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,7 +30,7 @@ class StockInFragment : Fragment() {
     private fun setupItemAdapter() {
         adapterItems = ArrayAdapter<String>(requireContext(), R.layout.list_item, placeholder)
         binding.autoCompleteText.setAdapter(adapterItems)
-        binding.autoCompleteText.setOnItemClickListener{ adapterView, view, i, l ->
+        binding.autoCompleteText.setOnItemClickListener { adapterView, view, i, l ->
             val items = adapterView.getItemAtPosition(i).toString()
             Toast.makeText(requireContext(), "Selected item: $items", Toast.LENGTH_SHORT).show()
         }
