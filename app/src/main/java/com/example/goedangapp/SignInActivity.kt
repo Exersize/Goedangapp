@@ -27,6 +27,5 @@ class SignInActivity : AppCompatActivity() {
 
     private fun signIn() {
         val credentialManager = CredentialManager.create(this)
-        val googleIdOption = GetGoogle
     }
 }
