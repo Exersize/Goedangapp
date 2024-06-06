@@ -12,6 +12,15 @@
     <string name="quantity">QTY: 27 KG</string>
     <string name="average">AVG: 28 KG</string>
     <string name="idbarang">ID:123131</string>
+    <string name="inventory">Inventory Overview</string>
+    <string name="searchbar_hint">Cari Item</string>
+    <string name="current">Current Stock</string>
+    <string name="low">Low in Stock</string>
+    <string name="recently">Recently Add</string>
+    <string name="product">Product Stock</string>
+    <string name="lowstock">Product Low in Stock</string>
+    <string name="recentadd">Product Recently Add</string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Tes</string>
 </resources>
