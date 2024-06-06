@@ -4,7 +4,6 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.credentials.CredentialManager
 import com.example.goedangapp.databinding.ActivitySignInBinding
 
 class SignInActivity : AppCompatActivity() {
@@ -19,13 +18,8 @@ class SignInActivity : AppCompatActivity() {
         // Placeholder simpel untuk pindah Activity
         // TODO : Integrasi Google Sign In
         binding.signInText.setOnClickListener{
-//            val intent = Intent(this, MainActivity::class.java)
-//            startActivity(intent)
-//            signIn()
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
         }
-    }
-
-    private fun signIn() {
-        val credentialManager = CredentialManager.create(this)
     }
 }
