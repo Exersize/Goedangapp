@@ -48,7 +48,6 @@
 
     <com.google.android.material.card.MaterialCardView
 
-        style="@style/Widget.Material3.CardView.Elevated"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
@@ -112,13 +111,12 @@
     </com.google.android.material.card.MaterialCardView>
 
     <com.google.android.material.card.MaterialCardView
-        style="@style/Widget.Material3.CardView.Elevated"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
+        android:layout_marginEnd="40dp"
         android:elevation="2dp"
         app:cardCornerRadius="16dp"
-        android:layout_marginEnd="40dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/graph">
 
@@ -132,20 +130,20 @@
                 android:id="@+id/tv12"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Current Stock"
-                android:textSize="10sp"
                 android:layout_margin="4dp"
+                android:text="Current Stock"
                 android:textColor="@color/white"
+                android:textSize="10sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="2,5%"
-                android:textSize="12sp"
                 android:layout_margin="4dp"
+                android:text="2,5%"
                 android:textColor="@color/white"
+                android:textSize="12sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -153,11 +151,11 @@
                 android:id="@+id/tv32"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="58 items"
-                android:textStyle="bold"
                 android:layout_margin="4dp"
                 android:layout_marginTop="12dp"
+                android:text="58 items"
                 android:textColor="@color/white"
+                android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tv12" />
@@ -165,8 +163,9 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="890 Kg"
                 android:layout_margin="4dp"
+                android:layout_marginStart="24dp"
+                android:text="890 Kg"
                 android:textColor="@color/white"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -177,7 +176,6 @@
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/materialCardView"
-        style="@style/Widget.Material3.CardView.Elevated"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
@@ -230,6 +228,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="4dp"
+                android:layout_marginStart="24dp"
                 android:text="890 Kg"
                 android:textColor="@color/white"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -238,7 +237,6 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.card.MaterialCardView>
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

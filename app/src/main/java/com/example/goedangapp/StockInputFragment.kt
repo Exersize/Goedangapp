@@ -9,13 +9,18 @@ import androidx.viewpager2.widget.ViewPager2
 import com.example.goedangapp.databinding.FragmentStockInputBinding
 import com.example.goedangapp.util.PagerAdapter
 import com.google.android.material.tabs.TabLayout
+import com.google.android.material.tabs.TabLayoutMediator
 
 
 class StockInputFragment : Fragment() {
 
-    private  var _binding: FragmentStockInputBinding? = null
+    private var _binding: FragmentStockInputBinding? = null
     private val binding get() = _binding!!
     private lateinit var adapter: PagerAdapter
+    private val fragments = listOf(
+        StockInFragment(),
+        StockOutFragment(),
+    )
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -27,10 +32,18 @@ class StockInputFragment : Fragment() {
     }
 
     private fun setupViewPagerAndTabs() {
-        adapter = PagerAdapter(childFragmentManager, lifecycle)
+        adapter = PagerAdapter(childFragmentManager, lifecycle, fragments)
         binding.viewPager2.adapter = adapter
 
-        binding.stockInputTab.addOnTabSelectedListener(object: TabLayout.OnTabSelectedListener{
+        TabLayoutMediator(binding.stockInputTab, binding.viewPager2) {tab, position ->
+            tab.text = when (position) {
+                0 -> "Stock In"
+                1 -> "Stock Out"
+                else -> "Tab $position"
+            }
+        }
+
+        binding.stockInputTab.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabSelected(tab: TabLayout.Tab) {
                 binding.viewPager2.currentItem = tab.position
             }

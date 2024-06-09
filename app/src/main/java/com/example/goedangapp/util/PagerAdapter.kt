@@ -7,15 +7,16 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.example.goedangapp.StockInFragment
 import com.example.goedangapp.StockOutFragment
 
-class PagerAdapter(fragmentManager: FragmentManager, lifecycle: Lifecycle) : FragmentStateAdapter(fragmentManager, lifecycle) {
+class PagerAdapter(
+    fragmentManager: FragmentManager,
+    lifecycle: Lifecycle,
+    private val fragments: List<Fragment>
+) : FragmentStateAdapter(fragmentManager, lifecycle) {
     override fun getItemCount(): Int {
-        return 2
+        return fragments.size
     }
 
     override fun createFragment(position: Int): Fragment {
-        return when (position) {
-            0 -> StockInFragment()
-            else -> StockOutFragment()
-        }
+        return fragments[position]
     }
 }
