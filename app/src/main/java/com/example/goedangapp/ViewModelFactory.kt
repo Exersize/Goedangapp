@@ -7,6 +7,7 @@ import com.example.goedangapp.repository.GoedangRepo
 import com.example.goedangapp.repository.Injection
 import com.example.goedangapp.ui.login.LoginViewModel
 import com.example.goedangapp.ui.register.RegisterViewModel
+import com.example.goedangapp.ui.splash.SplashScreenViewModel
 
 class ViewModelFactory (private val repository: GoedangRepo) :
     ViewModelProvider.NewInstanceFactory() {
@@ -23,6 +24,9 @@ class ViewModelFactory (private val repository: GoedangRepo) :
             }
             modelClass.isAssignableFrom(ProfileViewModel::class.java) -> {
                 ProfileViewModel(repository) as T
+            }
+            modelClass.isAssignableFrom(SplashScreenViewModel::class.java) -> {
+                SplashScreenViewModel(repository) as T
             }
 
 
