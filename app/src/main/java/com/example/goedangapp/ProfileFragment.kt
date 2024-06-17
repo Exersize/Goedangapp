@@ -1,6 +1,8 @@
 package com.example.goedangapp
 
+import android.content.Intent
 import android.os.Bundle
+import android.provider.Settings
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,33 +10,50 @@ import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import com.example.goedangapp.databinding.FragmentProfileBinding
+import com.example.goedangapp.ui.login.LoginActivity
+import java.util.Locale
 
 
 class ProfileFragment : Fragment() {
     private var _binding: FragmentProfileBinding? = null
     private val binding get() = _binding!!
-    private lateinit var adapterItems: ArrayAdapter<String>
-    private lateinit var autoCompleteTextView: AutoCompleteTextView
-    private val placeholder: List<String> = listOf("Item 1", "Item 2", "Item 3", "Item 4")
-
+    private val viewModel by viewModels<ProfileViewModel> {
+        ViewModelFactory.getInstance(requireContext())
+    }
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentProfileBinding.inflate(inflater, container, false)
-        setupItemAdapter()
+
         return binding.root
     }
 
-    private fun setupItemAdapter() {
-        adapterItems = ArrayAdapter<String>(requireContext(), R.layout.list_item, placeholder)
-        binding.autoCompleteText.setAdapter(adapterItems)
-        binding.autoCompleteText.setOnItemClickListener { adapterView, view, i, l ->
-            val items = adapterView.getItemAtPosition(i).toString()
-            Toast.makeText(requireContext(), "Selected item: $items", Toast.LENGTH_SHORT).show()
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        viewModel.getUser().observe(viewLifecycleOwner) { user ->
+            binding.profileNameUser.text = user.name
+            binding.profileEmailUser.text = user.email
         }
+
+        binding.logoutButton.setOnClickListener {
+            viewModel.logout()
+            val intent = Intent(requireContext(), LoginActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+            startActivity(intent)
+        }
+
+
+
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
 }
