@@ -81,68 +81,7 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <!-- Business Type Spinner -->
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/businessTypeSpinner"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:hint="Business Type"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/profileHeader">
 
-        <AutoCompleteTextView
-            android:id="@+id/auto_complete_text"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="none" />
-
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <!-- Password Change Section -->
-    <LinearLayout
-        android:id="@+id/passwordChangeSection"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/businessTypeSpinner">
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/password_input_in"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@+id/text_quantity">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/password_input_verify"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Current Password"
-                android:inputType="text" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/qty_input_in"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@+id/text_quantity">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/qty_input_edit"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="New Password"
-                android:inputType="text" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-    </LinearLayout>
 
     <!-- Buttons Section -->
     <LinearLayout
@@ -153,29 +92,9 @@
         android:padding="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/passwordChangeSection">
+        app:layout_constraintTop_toBottomOf="@+id/profileHeader">
 
-        <Button
-            android:id="@+id/changePasswordButton"
-            style="@style/Widget.MaterialComponents.Button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/bg_button_gradient"
-            android:text="Change Password"
-            android:textColor="#FFFFFF"
-            app:backgroundTint="@null"
-            app:cornerRadius="24dp" />
 
-        <Button
-            android:id="@+id/faqButton"
-            style="@style/Widget.MaterialComponents.Button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:background="@drawable/bg_button_gradient"
-            android:text="FAQ"
-            android:textColor="#FFFFFF"
-            app:backgroundTint="@null" />
 
         <Button
             android:id="@+id/logoutButton"

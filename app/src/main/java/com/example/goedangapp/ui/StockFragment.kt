@@ -1,4 +1,4 @@
-package com.example.goedangapp
+package com.example.goedangapp.ui
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment

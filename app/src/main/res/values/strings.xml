@@ -23,4 +23,14 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Tes</string>
+    <string name="login">Login</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="register">Register\n</string>
+    <string name="or">Or</string>
+    <string name="name">Name</string>
+    <string name="full_name">Full Name</string>
+    <string name="no_internet">No Internet Connection</string>
+    <string name="no_internet_description">Please Check Your Internet Connection!</string>
+    <string name="ok">OK</string>
 </resources>
