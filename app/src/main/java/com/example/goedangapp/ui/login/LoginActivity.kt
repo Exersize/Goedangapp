@@ -14,6 +14,7 @@ import com.example.goedangapp.ViewModelFactory
 import com.example.goedangapp.databinding.ActivityLoginBinding
 import com.example.goedangapp.model.UserModel
 import com.example.goedangapp.response.LoginResponse
+import com.example.goedangapp.response.LoginResponse2
 import com.example.goedangapp.ui.register.RegisterActivity
 import com.example.goedangapp.util.ResultState
 import com.example.goedangapp.util.showLoading
@@ -59,18 +60,21 @@ class LoginActivity : AppCompatActivity() {
                             }
 
                             is ResultState.Success -> {
-                                val loginResponse = result.data as LoginResponse
-                                loginResponse.name?.let { it1 ->
-                                    loginResponse.token?.let { it2 ->
-                                        UserModel(
-                                            it1,
-                                            binding.edLoginEmail.text.toString(),
-                                            it2
-                                        )
+                                val loginResponse = result.data as LoginResponse2
+                                loginResponse.user?.fullName?.let { name ->
+                                    loginResponse.accessTokens?.token?.let { token ->
+                                        loginResponse.user.id?.let { id ->
+                                            UserModel(
+                                                name,
+                                                binding.edLoginEmail.text.toString(),
+                                                token,
+                                                id
+                                            )
+                                        }
                                     }
-                                }?.let { it2 ->
+                                }?.let { userModel ->
                                     viewModel.saveUser(
-                                        it2
+                                        userModel
                                     )
                                 }
                                 // You need to define a message property in the LoginResponse class
@@ -78,7 +82,8 @@ class LoginActivity : AppCompatActivity() {
                                 // showToast(loginResponse.message)
                                 binding.progressIndicator.showLoading(false)
                                 val intent = Intent(this, MainActivity::class.java)
-                                intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+                                intent.flags =
+                                    Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
                                 startActivity(intent)
                                 finish()
                             }

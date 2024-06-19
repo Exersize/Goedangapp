@@ -5,6 +5,9 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.goedangapp.repository.GoedangRepo
 import com.example.goedangapp.repository.Injection
+import com.example.goedangapp.ui.input.AddItemViewModel
+import com.example.goedangapp.ui.input.StockInViewModel
+import com.example.goedangapp.ui.input.StockInputViewModel
 import com.example.goedangapp.ui.login.LoginViewModel
 import com.example.goedangapp.ui.register.RegisterViewModel
 import com.example.goedangapp.ui.splash.SplashScreenViewModel
@@ -27,6 +30,15 @@ class ViewModelFactory (private val repository: GoedangRepo) :
             }
             modelClass.isAssignableFrom(SplashScreenViewModel::class.java) -> {
                 SplashScreenViewModel(repository) as T
+            }
+            modelClass.isAssignableFrom(AddItemViewModel::class.java) -> {
+                AddItemViewModel(repository) as T
+            }
+            modelClass.isAssignableFrom(StockInputViewModel::class.java) -> {
+                StockInputViewModel(repository) as T
+            }
+            modelClass.isAssignableFrom(StockInViewModel::class.java) -> {
+                StockInViewModel(repository) as T
             }
 
 

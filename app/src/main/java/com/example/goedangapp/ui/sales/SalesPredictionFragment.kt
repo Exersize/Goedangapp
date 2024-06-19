@@ -1,4 +1,4 @@
-package com.example.goedangapp.sales
+package com.example.goedangapp.ui.sales
 
 import android.os.Bundle
 import android.view.LayoutInflater

@@ -4,8 +4,8 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.example.goedangapp.StockInFragment
-import com.example.goedangapp.StockOutFragment
+import com.example.goedangapp.ui.input.StockInFragment
+import com.example.goedangapp.ui.input.StockOutFragment
 
 class PagerAdapter(
     fragmentManager: FragmentManager,
