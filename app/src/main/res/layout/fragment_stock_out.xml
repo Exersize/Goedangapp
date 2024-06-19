@@ -42,15 +42,12 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
-
-
-
         <TextView
             android:id="@+id/text_quantity"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:labelFor="@id/qty_input_in"
+            android:labelFor="@id/qty_input_layout"
             android:text="Quantity"
             android:textColor="@color/black"
             android:textSize="20sp"
@@ -60,7 +57,7 @@
             app:layout_constraintTop_toBottomOf="@id/item_input_in" />
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/qty_input_in"
+            android:id="@+id/qty_input_layout"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -78,52 +75,21 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
-            android:id="@+id/text_date"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:labelFor="@id/qty_input_in"
-            android:text="Date"
-            android:textColor="@color/black"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/qty_input_in" />
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/date_input_in"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Insert Date"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/text_date">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/date_input_edit"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="text" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <TextView
             android:id="@+id/text_price"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:labelFor="@id/qty_input_in"
+            android:labelFor="@id/qty_input_layout"
             android:text="Price"
             android:textColor="@color/black"
             android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/date_input_in" />
+            app:layout_constraintTop_toBottomOf="@id/qty_input_layout" />
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/price_input_in"
+            android:id="@+id/price_input_layout"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -145,14 +111,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:labelFor="@id/qty_input_in"
+            android:labelFor="@id/qty_input_layout"
             android:text="Total"
             android:textColor="@color/black"
             android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/price_input_in" />
+            app:layout_constraintTop_toBottomOf="@id/price_input_layout" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/total_input_in"
@@ -160,6 +126,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Total Price"
+            android:inputType="none"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/text_total">
@@ -168,7 +135,7 @@
                 android:id="@+id/total_input_edit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="text" />
+                android:inputType="none" />
 
         </com.google.android.material.textfield.TextInputLayout>
 

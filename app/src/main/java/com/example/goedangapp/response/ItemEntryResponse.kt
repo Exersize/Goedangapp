@@ -2,31 +2,34 @@ package com.example.goedangapp.response
 
 import com.google.gson.annotations.SerializedName
 
-data class AddItemResponse(
+data class ItemEntryResponse(
 
 	@field:SerializedName("data")
-	val data: AddItemItem? = null,
+	val data: ItemEntryItem? = null,
 
 	@field:SerializedName("message")
 	val message: String? = null
 )
 
-data class AddItemItem(
+data class ItemEntryItem(
+
+	@field:SerializedName("itemId")
+	val itemId: String? = null,
 
 	@field:SerializedName("createdAt")
 	val createdAt: String? = null,
 
+	@field:SerializedName("total")
+	val total: String? = null,
+
+	@field:SerializedName("inOut")
+	val inOut: String? = null,
+
 	@field:SerializedName("quantity")
 	val quantity: String? = null,
 
-	@field:SerializedName("measuringUnit")
-	val measuringUnit: String? = null,
-
-	@field:SerializedName("name")
-	val name: String? = null,
-
-	@field:SerializedName("threshold")
-	val threshold: Int? = null,
+	@field:SerializedName("price")
+	val price: String? = null,
 
 	@field:SerializedName("id")
 	val id: String? = null,

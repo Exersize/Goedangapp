@@ -2,6 +2,7 @@ package com.example.goedangapp.retrofit
 
 import com.example.goedangapp.response.AddItemResponse
 import com.example.goedangapp.response.AuthResponse
+import com.example.goedangapp.response.ItemEntryResponse
 import com.example.goedangapp.response.ItemResponseItem
 import com.example.goedangapp.response.LoginResponse
 import com.example.goedangapp.response.LoginResponse2
@@ -40,4 +41,15 @@ interface ApiService {
 
     @GET( "items")
     suspend fun getItem(): List<ItemResponseItem>
+
+    @FormUrlEncoded
+    @POST("item_entries")
+    suspend fun addItemEntry(
+        @Field("item_id") itemId: String,
+        @Field("user_id") userId: String,
+        @Field("in_out") inOut: String,
+        @Field("quantity") quantity: Int,
+        @Field("price") price: Int,
+        @Field("total") total: Int,
+    ) : ItemEntryResponse
 }

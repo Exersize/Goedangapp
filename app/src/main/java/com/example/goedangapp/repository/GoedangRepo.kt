@@ -27,9 +27,25 @@ class GoedangRepo private constructor(
             val successResponse = apiService.addItem(measuringUnit, name, quantity, userId)
             emit(ResultState.Success(successResponse))
         } catch (e: HttpException) {
-            null
+            emit(ResultState.Error(e.toString()))
         }
     }
+
+    fun addItemEntry(itemId: String, userId: String, inOut: String, quantity: Int, price: Int, total: Int) = liveData {
+        emit(ResultState.Loading)
+        try {
+            val successResponse = apiService.addItemEntry(itemId, userId, inOut, quantity, price, total)
+            emit(ResultState.Success(successResponse))
+        } catch (e: HttpException) {
+            emit(ResultState.Error(e.toString()))
+        }
+    }
+
+    suspend fun getUserId(): String {
+        val user = userPreference.getUser().first()
+        return user.userId
+    }
+
 
     fun fetchItemName(): LiveData<ResultState<List<String>>> {
         return liveData {
@@ -45,6 +61,17 @@ class GoedangRepo private constructor(
             } catch (e: Exception) {
                 emit(ResultState.Error(e.toString()))
             }
+        }
+    }
+
+    suspend fun fetchItemId(name: String?): String {
+        return try {
+            val response = apiService.getItem()
+            val itemMap = response.associateBy(ItemResponseItem::name, ItemResponseItem::id)
+            val id = itemMap[name]
+            id ?: throw Exception("Name not found")
+        } catch (e: Exception) {
+            throw Exception("Error fetching item ID: ${e.message}")
         }
     }
 

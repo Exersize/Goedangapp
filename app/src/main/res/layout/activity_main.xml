@@ -11,26 +11,28 @@
     <FrameLayout
         android:id="@+id/frame_layout"
         android:layout_width="match_parent"
-        android:layout_height="675dp" />
+        android:layout_height="match_parent"
+        android:layout_above="@id/bottom_appbar" />
 
     <com.google.android.material.bottomappbar.BottomAppBar
+        android:id="@+id/bottom_appbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/bottom_appbar"
         android:layout_gravity="bottom"
         android:background="@color/white"
         app:addElevationShadow="true"
         app:fabCradleMargin="10dp"
-        app:fabCradleRoundedCornerRadius="50dp">
+        app:fabCradleRoundedCornerRadius="50dp"
+        app:layout_behavior="com.google.android.material.bottomappbar.BottomAppBar$Behavior">
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottom_navigation_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/bottom_navigation_view"
             android:layout_marginEnd="20dp"
-            app:labelVisibilityMode="labeled"
             android:background="@android:color/transparent"
             android:outlineSpotShadowColor="@color/white"
+            app:labelVisibilityMode="labeled"
             app:menu="@menu/bottom_navbar" />
 
     </com.google.android.material.bottomappbar.BottomAppBar>
@@ -40,10 +42,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/white"
+        android:contentDescription="@string/add_product"
         android:src="@drawable/baseline_add_24"
         app:layout_anchor="@id/bottom_appbar"
-        android:contentDescription="@string/add_product"
         app:maxImageSize="40dp"
-        app:tint ="@color/red"/>
+        app:tint="@color/red" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
