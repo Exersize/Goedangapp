@@ -75,6 +75,14 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
+            <ImageView
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:layout_marginStart="5dp"
+                app:layout_constraintStart_toEndOf="@id/lowest_in_stock_tv"
+                app:layout_constraintTop_toTopOf="@id/lowest_in_stock_tv"
+                app:layout_constraintBottom_toBottomOf="@id/lowest_in_stock_tv"
+                android:src="@drawable/low_in_stock" />
 
             <TextView
                 android:id="@+id/lowest_in_stock_item"
@@ -130,6 +138,15 @@
                 android:textSize="10sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:layout_marginStart="5dp"
+                app:layout_constraintStart_toEndOf="@id/recently_add_tv"
+                app:layout_constraintTop_toTopOf="@id/recently_add_tv"
+                app:layout_constraintBottom_toBottomOf="@id/recently_add_tv"
+                android:src="@drawable/recently_add" />
 
             <TextView
                 android:id="@+id/recently_add_item"
