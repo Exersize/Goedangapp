@@ -16,84 +16,60 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="100dp"
+            android:background="@drawable/gradient_black_green"
             android:padding="10dp">
-
-            <ImageView
-                android:id="@+id/imgUserPhoto"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_marginStart="8dp"
-                android:scaleType="centerCrop"
-                card_view:layout_constraintBottom_toBottomOf="parent"
-                card_view:layout_constraintStart_toStartOf="parent"
-                card_view:layout_constraintTop_toTopOf="parent"
-                tools:src="@tools:sample/avatars" />
 
             <TextView
                 android:id="@+id/tvJenis"
-                android:layout_width="0dp"
-                android:layout_height="30dp"
-                android:layout_marginStart="24dp"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_marginStart="8dp"
                 android:layout_marginEnd="8dp"
-                android:layout_toEndOf="@id/imgUserPhoto"
+                android:textColor="@color/white"
                 android:gravity="center_vertical"
-                android:textSize="20sp"
+                android:textSize="30sp"
                 android:textStyle="bold"
                 card_view:layout_constraintBottom_toBottomOf="parent"
-                card_view:layout_constraintEnd_toEndOf="parent"
-                card_view:layout_constraintStart_toEndOf="@+id/imgUserPhoto"
+                card_view:layout_constraintStart_toStartOf="parent"
                 card_view:layout_constraintTop_toTopOf="parent"
                 tools:text="@string/cabai" />
 
-            <TextView
-                android:id="@+id/tvId"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="2dp"
-                android:layout_toEndOf="@id/imgUserPhoto"
-                android:gravity="center_vertical"
-                android:textSize="15sp"
-                android:textStyle="bold"
-                card_view:layout_constraintBottom_toBottomOf="parent"
-                card_view:layout_constraintEnd_toEndOf="parent"
-                card_view:layout_constraintHorizontal_bias="0.1"
-                card_view:layout_constraintStart_toStartOf="@+id/tvJenis"
-                card_view:layout_constraintTop_toBottomOf="@+id/tvJenis"
-                card_view:layout_constraintVertical_bias="1.0"
-                tools:text="@string/idbarang" />
+
 
             <TextView
                 android:id="@+id/tvQty"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="2dp"
-                android:layout_toEndOf="@id/tvId"
+                android:layout_toEndOf="@id/tvJenis"
                 android:gravity="center_vertical"
-                android:textSize="15sp"
+                android:textColor="@color/white"
+                android:textSize="25sp"
                 android:textStyle="bold"
                 card_view:layout_constraintBottom_toBottomOf="parent"
                 card_view:layout_constraintEnd_toEndOf="parent"
+                card_view:layout_constraintTop_toTopOf="parent"
                 card_view:layout_constraintHorizontal_bias="0.1"
-                card_view:layout_constraintStart_toEndOf="@+id/tvId"
-                card_view:layout_constraintTop_toBottomOf="@+id/tvJenis"
-                card_view:layout_constraintVertical_bias="1.0"
+                card_view:layout_constraintStart_toEndOf="@+id/tvJenis"
+                android:layout_marginStart="40dp"
                 tools:text="@string/quantity" />
 
             <TextView
-                android:id="@+id/tvAvg"
+                android:id="@+id/tvWeight"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="2dp"
                 android:layout_toEndOf="@id/tvQty"
                 android:gravity="center_vertical"
-                android:textSize="15sp"
+                android:textColor="@color/white"
+                android:textSize="25sp"
                 android:textStyle="bold"
                 card_view:layout_constraintBottom_toBottomOf="parent"
                 card_view:layout_constraintEnd_toEndOf="parent"
-                card_view:layout_constraintHorizontal_bias="0.351"
+                card_view:layout_constraintHorizontal_bias="0.1"
                 card_view:layout_constraintStart_toEndOf="@+id/tvQty"
-                card_view:layout_constraintTop_toBottomOf="@+id/tvJenis"
-                card_view:layout_constraintVertical_bias="1.0"
+                card_view:layout_constraintTop_toTopOf="parent"
+                android:layout_marginStart="70dp"
                 tools:text="@string/average" />
 
 
