@@ -50,19 +50,20 @@
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/lowest_in_stock"
-        android:layout_width="135dp"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:elevation="2dp"
         app:cardCornerRadius="16dp"
-        app:layout_constraintStart_toStartOf="@+id/welcome"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/graph">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/bg_button_gradient"
-            android:padding="8dp">
+            android:padding="16dp">
 
             <TextView
                 android:id="@+id/lowest_in_stock_tv"
@@ -71,7 +72,7 @@
                 android:layout_margin="4dp"
                 android:text="Lowest in Stock"
                 android:textColor="@color/white"
-                android:textSize="10sp"
+                android:textSize="12sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -79,16 +80,17 @@
                 android:layout_width="10dp"
                 android:layout_height="10dp"
                 android:layout_marginStart="5dp"
-                app:layout_constraintStart_toEndOf="@id/lowest_in_stock_tv"
-                app:layout_constraintTop_toTopOf="@id/lowest_in_stock_tv"
+                android:src="@drawable/low_in_stock"
                 app:layout_constraintBottom_toBottomOf="@id/lowest_in_stock_tv"
-                android:src="@drawable/low_in_stock" />
+                app:layout_constraintStart_toEndOf="@id/lowest_in_stock_tv"
+                app:layout_constraintTop_toTopOf="@id/lowest_in_stock_tv" />
 
             <TextView
                 android:id="@+id/lowest_in_stock_item"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="4dp"
+                android:textSize="18sp"
                 android:layout_marginTop="12dp"
                 android:text="58 items"
                 android:textColor="@color/white"
@@ -102,10 +104,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="4dp"
+                android:textSize="18sp"
                 android:text="890 Kg"
                 android:textColor="@color/white"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"/>
+                app:layout_constraintEnd_toEndOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.card.MaterialCardView>
@@ -113,20 +116,20 @@
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/recently_add"
-        android:layout_width="135dp"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
-        android:layout_marginEnd="40dp"
         android:elevation="2dp"
         app:cardCornerRadius="16dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/graph">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lowest_in_stock">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/bg_button_gradient"
-            android:padding="8dp">
+            android:padding="16dp">
 
             <TextView
                 android:id="@+id/recently_add_tv"
@@ -135,7 +138,7 @@
                 android:layout_margin="4dp"
                 android:text="Recently Add"
                 android:textColor="@color/white"
-                android:textSize="10sp"
+                android:textSize="12sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -143,10 +146,21 @@
                 android:layout_width="10dp"
                 android:layout_height="10dp"
                 android:layout_marginStart="5dp"
-                app:layout_constraintStart_toEndOf="@id/recently_add_tv"
-                app:layout_constraintTop_toTopOf="@id/recently_add_tv"
+                android:src="@drawable/recently_add"
                 app:layout_constraintBottom_toBottomOf="@id/recently_add_tv"
-                android:src="@drawable/recently_add" />
+                app:layout_constraintStart_toEndOf="@id/recently_add_tv"
+                app:layout_constraintTop_toTopOf="@id/recently_add_tv" />
+
+            <TextView
+                android:id="@+id/recently_add_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="4dp"
+                android:text="xx/xx/xxxx"
+                android:textColor="@color/white"
+                android:textSize="10sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/recently_add_item"
@@ -154,6 +168,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="4dp"
                 android:layout_marginTop="12dp"
+                android:textSize="18sp"
                 android:text="58 items"
                 android:textColor="@color/white"
                 android:textStyle="bold"
@@ -166,11 +181,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="4dp"
-                android:layout_marginStart="24dp"
                 android:text="890 Kg"
+                android:textSize="18sp"
                 android:textColor="@color/white"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"/>
+                app:layout_constraintEnd_toEndOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </com.google.android.material.card.MaterialCardView>

@@ -60,6 +60,7 @@
 
             <TextView
                 android:id="@+id/profile_email"
+                android:layout_marginTop="16dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/email"
@@ -69,6 +70,8 @@
 
             <TextView
                 android:id="@+id/profile_email_user"
+                android:maxLines="1"
+                android:ellipsize="end"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"

@@ -29,7 +29,7 @@ class RecentAdd : Fragment() {
             viewModel = this@RecentAdd.viewModel
         }
 
-        val itemEntryAdapter = ItemEntryAdapter(emptyList(), viewModel)
+        val itemEntryAdapter = ItemEntryAdapter(requireContext(), emptyList(), viewModel)
         binding.recyclerView.apply {
             layoutManager = LinearLayoutManager(context)
             adapter = itemEntryAdapter

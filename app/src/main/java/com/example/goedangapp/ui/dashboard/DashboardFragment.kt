@@ -2,6 +2,7 @@ package com.example.goedangapp.ui.dashboard
 
 import DashboardViewModel
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -12,6 +13,8 @@ import androidx.lifecycle.Observer
 import com.example.goedangapp.ViewModelFactory
 import com.example.goedangapp.databinding.FragmentDashboardBinding
 import com.example.goedangapp.util.ResultState
+import java.time.OffsetDateTime
+import java.time.format.DateTimeFormatter
 
 
 class DashboardFragment : Fragment() {
@@ -41,7 +44,6 @@ class DashboardFragment : Fragment() {
                     val firstItem = filteredAndSortedItems.firstOrNull()
                     val lowStockQtyText : String
 
-
                     firstItem?.let {
                         val lowStockQty = it.quantity
                         val lowStockMeasuringUnit = it.measuringUnit
@@ -61,33 +63,61 @@ class DashboardFragment : Fragment() {
                 else -> {}
             }
         })
+
+        viewModel.getSortedItemEntries().observe(viewLifecycleOwner, Observer { result ->
+            when (result) {
+
+                is ResultState.Loading -> {}
+                is ResultState.Success -> {
+                    val sortedItem = result.data
+                    val firstItem = sortedItem.firstOrNull()
+                    var recentlyAddText : String
+
+                    firstItem?.let {
+                        viewModel.getItemById(it.itemId ?: "").observe(viewLifecycleOwner, Observer { itemDetailResult ->
+                            when (itemDetailResult) {
+                                is ResultState.Success -> {
+                                    val itemDetail = itemDetailResult.data
+                                    val recentlyAddQty = it.quantity
+                                    val recentlyAddMeasuringUnit = itemDetail.measuringUnit
+                                    val recentlyAddName = itemDetail.name
+                                    val recentlyAddDate = formatDateString(it.createdAt)
+
+                                    recentlyAddText = "$recentlyAddQty $recentlyAddMeasuringUnit"
+
+                                    binding.recentlyAdd.visibility = View.VISIBLE
+                                    binding.recentlyAddItem.text = recentlyAddName
+                                    binding.recentlyAddQty.text = recentlyAddText
+                                    binding.recentlyAddDate.text = recentlyAddDate
+
+                                }
+                                is ResultState.Error -> {
+                                    Log.e("DashboardFragment", "Error fetching item detail: ${itemDetailResult.error}")
+                                }
+                                is ResultState.Loading -> {
+                                    // Handle loading state if needed
+                                }
+                                else -> {}
+                            }
+                        })
+                    } ?: run {
+                        binding.lowestInStock.visibility = View.GONE
+                    }
+                }
+                else -> {}
+            }
+        })
+
         return binding.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-
-//        viewModel.getSortedItemEntries().observe(viewLifecycleOwner, Observer { result ->
-//            when (result) {
-//                is ResultState.Loading -> {}
-//                is ResultState.Success -> {
-//                    val sortedItem = result.data
-//                    val firstItem = sortedItem.firstOrNull()
-//
-//                    firstItem?.let {
-//
-////                        val lowStockQty = it.quantity
-////                        val lowStockMeasuringUnit = it.measuringUnit
-////                        recentlyAddText = "$lowStockQty $lowStockMeasuringUnit"
-////
-////                        binding.lowestInStock.visibility = View.VISIBLE
-////                        binding.lowestInStockItem.text = it.name
-////
-////                        binding.lowestInStockQty.text = lowStockQtyText
-//                    } ?: run {
-//                        binding.lowestInStock.visibility = View.GONE
-//                    }
-//                }
-//            }
-//        })
+    private fun formatDateString(dateString: String?): String {
+        return if (dateString != null) {
+            val offsetDateTime = OffsetDateTime.parse(dateString)
+            val formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy")
+            offsetDateTime.format(formatter)
+        } else {
+            ""
+        }
     }
 }
