@@ -6,26 +6,50 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.goedangapp.R
+import com.example.goedangapp.ViewModelFactory
+import com.example.goedangapp.adapter.ItemAdapter
+import com.example.goedangapp.databinding.FragmentCurrentStockBinding
+import com.example.goedangapp.databinding.FragmentLowInStockBinding
+import com.example.goedangapp.util.ResultState
 
 class LowInStock : Fragment() {
-
-    companion object {
-        fun newInstance() = LowInStock()
-    }
-
-    private val viewModel: LowInStockViewModel by viewModels()
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        // TODO: Use the ViewModel
+    private var _binding: FragmentLowInStockBinding? = null
+    private val binding get() = _binding!!
+    private val viewModel by viewModels<LowInStockViewModel>(){
+        ViewModelFactory.getInstance(requireContext())
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        return inflater.inflate(R.layout.fragment_low_in_stock, container, false)
+        _binding = FragmentLowInStockBinding.inflate(inflater, container, false).apply {
+            lifecycleOwner = viewLifecycleOwner
+            viewModel = this@LowInStock.viewModel
+        }
+
+        val adapter = ItemAdapter()
+        binding.recyclerView.layoutManager = LinearLayoutManager(context)
+        binding.recyclerView.adapter = adapter
+
+        viewModel.items.observe(viewLifecycleOwner, Observer { result ->
+            when (result) {
+                is ResultState.Loading -> {
+                    // Show loading state
+                }
+                is ResultState.Success -> {
+                    adapter.submitList(result.data)
+                }
+                is ResultState.Error -> {
+                    // Show error message
+                }
+                else ->{}
+            }
+        })
+
+        return binding.root
     }
 }

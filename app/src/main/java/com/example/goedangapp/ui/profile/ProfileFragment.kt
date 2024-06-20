@@ -1,19 +1,15 @@
-package com.example.goedangapp
+package com.example.goedangapp.ui.profile
 
 import android.content.Intent
 import android.os.Bundle
-import android.provider.Settings
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ArrayAdapter
-import android.widget.AutoCompleteTextView
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import com.example.goedangapp.ViewModelFactory
 import com.example.goedangapp.databinding.FragmentProfileBinding
 import com.example.goedangapp.ui.login.LoginActivity
-import java.util.Locale
 
 
 class ProfileFragment : Fragment() {

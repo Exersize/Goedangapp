@@ -18,8 +18,4 @@ class StockInputViewModel(private val repository: GoedangRepo) : ViewModel() {
     private fun initTabTitles() {
         _tabTitles.value = listOf("Stock In", "Stock Out")
     }
-
-
-
-
 }

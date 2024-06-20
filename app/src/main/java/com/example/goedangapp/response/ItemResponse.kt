@@ -22,6 +22,9 @@ data class ItemResponseItem(
 	@field:SerializedName("name")
 	val name: String? = null,
 
+	@field:SerializedName("threshold")
+	val threshold: Int? = null,
+
 	@field:SerializedName("id")
 	val id: String? = null,
 

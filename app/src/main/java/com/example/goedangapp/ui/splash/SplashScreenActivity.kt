@@ -3,13 +3,10 @@ package com.example.goedangapp.ui.splash
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.lifecycleScope
-import com.example.goedangapp.MainActivity
+import com.example.goedangapp.ui.MainActivity
 import com.example.goedangapp.NetworkUtils
 import com.example.goedangapp.R
 import com.example.goedangapp.ViewModelFactory

@@ -5,7 +5,6 @@ import androidx.lifecycle.liveData
 import com.example.goedangapp.model.UserModel
 import com.example.goedangapp.response.AuthResponse
 import com.example.goedangapp.response.ItemResponseItem
-import com.example.goedangapp.response.LoginResponse
 import com.example.goedangapp.response.LoginResponse2
 import com.example.goedangapp.retrofit.ApiConfig
 import com.example.goedangapp.retrofit.ApiService
@@ -20,6 +19,46 @@ class GoedangRepo private constructor(
     private var apiService: ApiService,
     private val userPreference: UserPreference
 ) {
+
+    fun getItem(): LiveData<ResultState<List<ItemResponseItem>>> = liveData {
+        emit(ResultState.Loading)
+        try {
+            val response = apiService.getItem()
+            emit(ResultState.Success(response))
+        } catch (e: HttpException) {
+            emit(ResultState.Error(e.toString()))
+        } catch (e: Exception) {
+            emit(ResultState.Error(e.toString()))
+        }
+    }
+
+    fun filterLowStock() = liveData {
+        emit(ResultState.Loading)
+        try {
+            val response = apiService.getItem()
+
+            val filteredItems = response.filter {
+                it.quantity != null && it.threshold != null && it.quantity < it.threshold
+            }.sortedBy {
+                it.quantity
+            }
+            emit(ResultState.Success(filteredItems))
+        } catch (e: HttpException) {
+            emit(ResultState.Error(e.toString()))
+        }
+    }
+
+    fun getSortedItemEntries() = liveData {
+        emit(ResultState.Loading)
+        try {
+            val response = apiService.getItemEntries()
+
+            val sortedItem = response.sortedByDescending { it.createdAt }
+            emit(ResultState.Success(sortedItem))
+        } catch (e: HttpException) {
+            emit(ResultState.Error(e.toString()))
+        }
+    }
 
     fun addItem(measuringUnit: String, name: String, quantity: Int, userId: String) = liveData {
         emit(ResultState.Loading)
@@ -54,7 +93,6 @@ class GoedangRepo private constructor(
                 val response = apiService.getItem()
                 val itemMap = response.associateBy(ItemResponseItem::name, ItemResponseItem::id)
 
-                // Extracting names from the itemMap
                 val itemNamesList = itemMap.keys.filterNotNull().toList()
 
                 emit(ResultState.Success(itemNamesList))
