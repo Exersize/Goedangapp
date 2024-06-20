@@ -41,7 +41,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="Nama"
+                android:text="@string/name"
                 android:textSize="14sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -61,7 +61,7 @@
                 android:id="@+id/profile_email"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="nathania"
+                android:text="@string/email"
                 android:textSize="14sp"
                 app:layout_constraintBottom_toTopOf="@+id/profile_email_user"
                 app:layout_constraintStart_toStartOf="parent" />

@@ -9,8 +9,8 @@
     <string name="profile">Profile</string>
     <string name="add_product">Tambah Produk</string>
     <string name="cabai">Cabai</string>
-    <string name="quantity">QTY: 27 KG</string>
-    <string name="average">AVG: 28 KG</string>
+    <string name="quantity">QTY: 27</string>
+    <string name="average">KG</string>
     <string name="idbarang">ID:123131</string>
     <string name="inventory">Inventory Overview</string>
     <string name="searchbar_hint">Cari Item</string>
