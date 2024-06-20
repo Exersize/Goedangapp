@@ -1,5 +1,6 @@
 package com.example.goedangapp
 
+import DashboardViewModel
 import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
@@ -9,8 +10,12 @@ import com.example.goedangapp.ui.input.AddItemViewModel
 import com.example.goedangapp.ui.input.StockInViewModel
 import com.example.goedangapp.ui.input.StockInputViewModel
 import com.example.goedangapp.ui.input.StockOutViewModel
+import com.example.goedangapp.ui.inventory.CurrentStockViewModel
+import com.example.goedangapp.ui.inventory.LowInStockViewModel
+import com.example.goedangapp.ui.inventory.RecentAddViewModel
 import com.example.goedangapp.ui.inventory.StockViewModel
 import com.example.goedangapp.ui.login.LoginViewModel
+import com.example.goedangapp.ui.profile.ProfileViewModel
 import com.example.goedangapp.ui.register.RegisterViewModel
 import com.example.goedangapp.ui.splash.SplashScreenViewModel
 
@@ -23,7 +28,6 @@ class ViewModelFactory (private val repository: GoedangRepo) :
             modelClass.isAssignableFrom(RegisterViewModel::class.java) -> {
                 RegisterViewModel(repository) as T
             }
-
             modelClass.isAssignableFrom(LoginViewModel::class.java) -> {
                 LoginViewModel(repository) as T
             }
@@ -48,6 +52,19 @@ class ViewModelFactory (private val repository: GoedangRepo) :
             modelClass.isAssignableFrom(StockViewModel::class.java) -> {
                 StockOutViewModel(repository) as T
             }
+            modelClass.isAssignableFrom(DashboardViewModel::class.java) -> {
+                DashboardViewModel(repository) as T
+            }
+            modelClass.isAssignableFrom(CurrentStockViewModel::class.java) -> {
+                CurrentStockViewModel(repository) as T
+            }
+            modelClass.isAssignableFrom(LowInStockViewModel::class.java) -> {
+                LowInStockViewModel(repository) as T
+            }
+            modelClass.isAssignableFrom(RecentAddViewModel::class.java) -> {
+                RecentAddViewModel(repository) as T
+            }
+
 
 
 

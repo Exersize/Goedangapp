@@ -2,18 +2,14 @@ package com.example.goedangapp.ui.login
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import com.example.goedangapp.MainActivity
+import com.example.goedangapp.ui.MainActivity
 import com.example.goedangapp.NetworkUtils
 import com.example.goedangapp.R
 import com.example.goedangapp.ViewModelFactory
 import com.example.goedangapp.databinding.ActivityLoginBinding
 import com.example.goedangapp.model.UserModel
-import com.example.goedangapp.response.LoginResponse
 import com.example.goedangapp.response.LoginResponse2
 import com.example.goedangapp.ui.register.RegisterActivity
 import com.example.goedangapp.util.ResultState

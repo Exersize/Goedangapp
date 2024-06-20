@@ -1,4 +1,4 @@
-package com.example.goedangapp
+package com.example.goedangapp.ui.profile
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData

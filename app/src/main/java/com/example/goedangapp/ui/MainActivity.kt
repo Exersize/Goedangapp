@@ -1,4 +1,4 @@
-package com.example.goedangapp
+package com.example.goedangapp.ui
 
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
@@ -6,10 +6,13 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
+import com.example.goedangapp.R
 import com.example.goedangapp.databinding.ActivityMainBinding
+import com.example.goedangapp.ui.dashboard.DashboardFragment
 import com.example.goedangapp.ui.sales.SalesFragment
 import com.example.goedangapp.ui.inventory.StockFragment
 import com.example.goedangapp.ui.input.StockInputFragment
+import com.example.goedangapp.ui.profile.ProfileFragment
 
 class MainActivity : AppCompatActivity() {
 

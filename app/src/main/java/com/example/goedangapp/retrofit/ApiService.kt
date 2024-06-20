@@ -2,6 +2,7 @@ package com.example.goedangapp.retrofit
 
 import com.example.goedangapp.response.AddItemResponse
 import com.example.goedangapp.response.AuthResponse
+import com.example.goedangapp.response.ItemEntryItem
 import com.example.goedangapp.response.ItemEntryResponse
 import com.example.goedangapp.response.ItemResponseItem
 import com.example.goedangapp.response.LoginResponse
@@ -52,4 +53,7 @@ interface ApiService {
         @Field("price") price: Int,
         @Field("total") total: Int,
     ) : ItemEntryResponse
+
+    @GET( "item_entries")
+    suspend fun getItemEntries(): List<ItemEntryItem>
 }
