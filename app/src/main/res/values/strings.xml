@@ -33,4 +33,5 @@
     <string name="no_internet">No Internet Connection</string>
     <string name="no_internet_description">Please Check Your Internet Connection!</string>
     <string name="ok">OK</string>
+    <string name="stockin">Stock-in</string>
 </resources>
