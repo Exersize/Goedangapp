@@ -6,26 +6,51 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.goedangapp.R
+import com.example.goedangapp.ViewModelFactory
+import com.example.goedangapp.databinding.FragmentRecentAddBinding
+import com.example.goedangapp.util.ResultState
 
 class RecentAdd : Fragment() {
-
-    companion object {
-        fun newInstance() = RecentAdd()
-    }
-
-    private val viewModel: RecentAddViewModel by viewModels()
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        // TODO: Use the ViewModel
+    private var _binding: FragmentRecentAddBinding? = null
+    private val binding get() = _binding!!
+    private val viewModel by viewModels<RecentAddViewModel>() {
+        ViewModelFactory.getInstance(requireContext())
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        return inflater.inflate(R.layout.fragment_recent_add, container, false)
+        _binding = FragmentRecentAddBinding.inflate(inflater, container, false).apply {
+            lifecycleOwner = viewLifecycleOwner
+            viewModel = this@RecentAdd.viewModel
+        }
+
+        val itemEntryAdapter = ItemEntryAdapter(emptyList(), viewModel)
+        binding.recyclerView.apply {
+            layoutManager = LinearLayoutManager(context)
+            adapter = itemEntryAdapter
+        }
+
+        viewModel.itemEntries.observe(viewLifecycleOwner, Observer { result ->
+            when (result) {
+                is ResultState.Loading -> {
+                    // Show loading state
+                }
+                is ResultState.Success -> {
+                    itemEntryAdapter.updateItems(result.data)
+                }
+                is ResultState.Error -> {
+                    // Show error message
+                }
+                else -> {}
+            }
+        })
+
+        return binding.root
     }
+
 }

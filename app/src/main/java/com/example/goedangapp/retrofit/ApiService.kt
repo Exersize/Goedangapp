@@ -2,6 +2,7 @@ package com.example.goedangapp.retrofit
 
 import com.example.goedangapp.response.AddItemResponse
 import com.example.goedangapp.response.AuthResponse
+import com.example.goedangapp.response.ItemDetailResponse
 import com.example.goedangapp.response.ItemEntryItem
 import com.example.goedangapp.response.ItemEntryResponse
 import com.example.goedangapp.response.ItemResponseItem
@@ -12,6 +13,7 @@ import retrofit2.http.FormUrlEncoded
 import retrofit2.http.GET
 import retrofit2.http.Header
 import retrofit2.http.POST
+import retrofit2.http.Path
 
 interface ApiService {
 
@@ -42,6 +44,11 @@ interface ApiService {
 
     @GET( "items")
     suspend fun getItem(): List<ItemResponseItem>
+
+    @GET("items/{id}")
+    suspend fun getItemById(
+        @Path("id") id: String
+    ): ItemDetailResponse
 
     @FormUrlEncoded
     @POST("item_entries")

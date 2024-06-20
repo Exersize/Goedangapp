@@ -1,9 +1,11 @@
 package com.example.goedangapp.repository
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.liveData
 import com.example.goedangapp.model.UserModel
 import com.example.goedangapp.response.AuthResponse
+import com.example.goedangapp.response.ItemDetailResponse
 import com.example.goedangapp.response.ItemResponseItem
 import com.example.goedangapp.response.LoginResponse2
 import com.example.goedangapp.retrofit.ApiConfig
@@ -19,6 +21,16 @@ class GoedangRepo private constructor(
     private var apiService: ApiService,
     private val userPreference: UserPreference
 ) {
+    fun getItemById(id: String): LiveData<ResultState<ItemDetailResponse>> = liveData {
+        emit(ResultState.Loading)
+        try{
+            val response = apiService.getItemById(id)
+            emit(ResultState.Success(response))
+        } catch (e: HttpException) {
+            Log.d("StoryRepository", "getDetailStory: ${e.message.toString()}")
+            emit(ResultState.Error(e.message.toString()))
+        }
+    }
 
     fun getItem(): LiveData<ResultState<List<ItemResponseItem>>> = liveData {
         emit(ResultState.Loading)
@@ -48,7 +60,7 @@ class GoedangRepo private constructor(
         }
     }
 
-    fun getSortedItemEntries() = liveData {
+    fun filterRecentItemEntry() = liveData {
         emit(ResultState.Loading)
         try {
             val response = apiService.getItemEntries()

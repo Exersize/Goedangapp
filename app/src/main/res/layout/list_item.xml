@@ -8,11 +8,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="4dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="4dp"
-        app:cardCornerRadius="4dp">
+        android:layout_marginHorizontal="8dp"
+        android:layout_marginVertical="4dp"
+        app:cardElevation="3dp"
+        app:cardCornerRadius="15dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -55,15 +54,14 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginEnd="8dp"
-                tools:text="@string/stockin"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                android:textColor="@color/white"
                 android:background="@drawable/tv_bg_green"
-                app:layout_constraintTop_toBottomOf="@id/tvJenis"
+                android:textColor="@color/white"
+                android:textSize="15sp"
+                android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                />
+                app:layout_constraintTop_toBottomOf="@id/tvJenis"
+                tools:text="@string/stockin" />
 
 
             <TextView
@@ -74,8 +72,8 @@
                 android:textSize="20sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@id/tvQty"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/tvQty"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.75"
                 tools:text="@string/average" />
@@ -92,8 +90,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0"
-                tools:text="20/12/2024"
-                />
+                tools:text="20/12/2024" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
