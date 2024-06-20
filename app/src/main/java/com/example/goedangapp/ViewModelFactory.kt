@@ -9,6 +9,7 @@ import com.example.goedangapp.ui.input.AddItemViewModel
 import com.example.goedangapp.ui.input.StockInViewModel
 import com.example.goedangapp.ui.input.StockInputViewModel
 import com.example.goedangapp.ui.input.StockOutViewModel
+import com.example.goedangapp.ui.inventory.StockViewModel
 import com.example.goedangapp.ui.login.LoginViewModel
 import com.example.goedangapp.ui.register.RegisterViewModel
 import com.example.goedangapp.ui.splash.SplashScreenViewModel
@@ -42,6 +43,9 @@ class ViewModelFactory (private val repository: GoedangRepo) :
                 StockInViewModel(repository) as T
             }
             modelClass.isAssignableFrom(StockOutViewModel::class.java) -> {
+                StockOutViewModel(repository) as T
+            }
+            modelClass.isAssignableFrom(StockViewModel::class.java) -> {
                 StockOutViewModel(repository) as T
             }
 

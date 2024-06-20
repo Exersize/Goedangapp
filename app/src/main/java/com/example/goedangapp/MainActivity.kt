@@ -8,7 +8,7 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import com.example.goedangapp.databinding.ActivityMainBinding
 import com.example.goedangapp.ui.sales.SalesFragment
-import com.example.goedangapp.ui.StockFragment
+import com.example.goedangapp.ui.inventory.StockFragment
 import com.example.goedangapp.ui.input.StockInputFragment
 
 class MainActivity : AppCompatActivity() {
