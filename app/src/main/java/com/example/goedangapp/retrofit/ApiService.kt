@@ -75,7 +75,7 @@ interface ApiService {
     suspend fun getItemLastEntries(): List<ItemLastEntryResponseItem>
 
     @GET("sales_overview")
-    suspend fun getSalesOverview(): List<SalesOverviewResponseItem>
+    suspend fun getSalesOverview(): SalesOverviewResponse
 
 
 }
