@@ -77,7 +77,7 @@ class AddItemActivity : AppCompatActivity() {
     }
 
     private fun setupItemAdapter() {
-        adapterItems = ArrayAdapter<String>(this, R.layout.list_item, placeholder)
+        adapterItems = ArrayAdapter<String>(this, R.layout.list_measurement, placeholder)
         binding.autoCompleteText.setAdapter(adapterItems)
         binding.autoCompleteText.setOnItemClickListener { adapterView, view, i, l ->
             selectedItem = adapterView.getItemAtPosition(i).toString()

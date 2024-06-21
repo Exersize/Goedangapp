@@ -167,7 +167,7 @@ class StockInFragment : Fragment() {
     }
 
     private fun setupItemAdapter(itemNames: List<String>) {
-        adapterItems = ArrayAdapter<String>(requireContext(), R.layout.list_item, itemNames)
+        adapterItems = ArrayAdapter<String>(requireContext(), R.layout.list_measurement, itemNames)
         binding.autoCompleteText.setAdapter(adapterItems)
         binding.autoCompleteText.setOnItemClickListener { adapterView, view, i, l ->
             selectedItem = adapterView.getItemAtPosition(i).toString()

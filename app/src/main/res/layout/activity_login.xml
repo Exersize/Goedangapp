@@ -89,8 +89,7 @@
             app:endIconMode="password_toggle"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tv_password"
-            >
+            app:layout_constraintTop_toBottomOf="@+id/tv_password">
 
             <com.example.goedangapp.ui.custom.PasswordEditText
                 android:id="@+id/ed_login_password"
@@ -107,11 +106,11 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
             android:layout_marginBottom="24dp"
+            android:foregroundGravity="center"
             android:text="@string/login"
-            app:layout_constraintTop_toBottomOf="@+id/til_login_password"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
-
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/til_login_password" />
 
 
         <Button
@@ -120,10 +119,11 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
             android:layout_marginBottom="24dp"
+            android:gravity="center"
             android:text="@string/register"
-            app:layout_constraintTop_toBottomOf="@+id/btn_login"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_login" />
 
         <View
             android:id="@+id/lineTop"
