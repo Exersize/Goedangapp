@@ -21,38 +21,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <LinearLayout
-        android:id="@+id/grafik"
-        android:layout_width="328dp"
-        android:layout_height="255dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:background="@color/gray"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvSalesOverview">
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:textColor="@color/white"
-            android:layout_gravity="center"
-            android:text="Graph here" />
-
-    </LinearLayout>
-
-    <TextView
-        android:id="@+id/tvSalesHistory"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Sales History"
-        android:layout_marginTop="16dp"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/grafik"
-        android:gravity="center" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
@@ -61,7 +30,7 @@
         android:layout_marginTop="4dp"
         android:padding="16dp"
         android:layout_marginBottom="54dp"
-        app:layout_constraintTop_toBottomOf="@id/tvSalesHistory"
+        app:layout_constraintTop_toBottomOf="@id/tvSalesOverview"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         tools:listitem="@layout/item_sales"

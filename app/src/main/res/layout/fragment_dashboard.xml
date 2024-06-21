@@ -32,21 +32,6 @@
         app:layout_constraintStart_toEndOf="@id/welcome"
         app:layout_constraintTop_toTopOf="@id/welcome" />
 
-    <LinearLayout
-        android:id="@+id/graph"
-        android:layout_width="245dp"
-        android:layout_height="269dp"
-        android:layout_marginTop="32dp"
-        android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/username">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Graph here" />
-    </LinearLayout>
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/lowest_in_stock"
@@ -57,7 +42,8 @@
         app:cardCornerRadius="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/graph">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
