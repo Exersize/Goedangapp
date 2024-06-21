@@ -10,6 +10,7 @@ import com.example.goedangapp.response.ItemLastEntryResponseItem
 import com.example.goedangapp.response.ItemResponseItem
 import com.example.goedangapp.response.LoginResponse2
 import com.example.goedangapp.response.SalesOverviewResponse
+import com.example.goedangapp.response.SalesOverviewResponseItem
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.GET
@@ -74,7 +75,7 @@ interface ApiService {
     suspend fun getItemLastEntries(): List<ItemLastEntryResponseItem>
 
     @GET("sales_overview")
-    suspend fun getSalesOverview(): SalesOverviewResponse
+    suspend fun getSalesOverview(): List<SalesOverviewResponseItem>
 
 
 }
