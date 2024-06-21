@@ -1,65 +1,74 @@
 package com.example.goedangapp.ui.sales
 
+import SalesAdapter
+import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.viewpager2.widget.ViewPager2
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.goedangapp.ViewModelFactory
 import com.example.goedangapp.databinding.FragmentSalesBinding
-import com.example.goedangapp.util.PagerAdapter
-import com.google.android.material.tabs.TabLayout
-import com.google.android.material.tabs.TabLayoutMediator
+import com.example.goedangapp.repository.CustomData
+import com.example.goedangapp.response.LastEntry
+import com.example.goedangapp.ui.MainActivity
+import com.example.goedangapp.util.OnItemClickListener
+import com.example.goedangapp.util.ResultState
 
 class SalesFragment : Fragment() {
     private var _binding: FragmentSalesBinding? = null
     private val binding get() = _binding!!
-    private lateinit var adapter: PagerAdapter
-    private val fragments = listOf(
-        SalesActualFragment(),
-        SalesPredictionFragment(),
-    )
+    private lateinit var adapter: SalesAdapter
+    private val items = mutableListOf<CustomData>()
+    private val viewModel: FragmentSalesViewModel by viewModels<FragmentSalesViewModel> {
+        ViewModelFactory.getInstance(requireContext())
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
         _binding = FragmentSalesBinding.inflate(inflater, container, false)
-        setupViewPagerAndTabs()
         return binding.root
     }
 
-    private fun setupViewPagerAndTabs() {
-        adapter = PagerAdapter(childFragmentManager, lifecycle, fragments)
-        binding.viewPager2.adapter = adapter
-
-        TabLayoutMediator(binding.salesTab, binding.viewPager2) { tab, position ->
-            tab.text = when (position) {
-                0 -> "Actual"
-                1 -> "Prediction"
-                else -> "Tab $position"
-            }
-        }
-
-        binding.salesTab.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
-            override fun onTabSelected(tab: TabLayout.Tab) {
-                binding.viewPager2.currentItem = tab.position
-            }
-
-            override fun onTabUnselected(p0: TabLayout.Tab?) {
-            }
-
-            override fun onTabReselected(p0: TabLayout.Tab?) {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        adapter = SalesAdapter(requireContext(), items, object : OnItemClickListener{
+            override fun onItemClick(customData: CustomData) {
+                val intent = Intent(requireContext(), SalesDetailActivity::class.java)
+                // Pass any necessary data to the activity
+                intent.putExtra("itemId", customData.id)
+                requireContext().startActivity(intent)
             }
         })
 
-        binding.viewPager2.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
-            override fun onPageSelected(position: Int) {
-                super.onPageSelected(position)
-                binding.salesTab.selectTab(binding.salesTab.getTabAt(position))
+        binding.recyclerView.layoutManager = LinearLayoutManager(context)
+        binding.recyclerView.adapter = adapter
+
+        viewModel.itemLastEntries.observe(viewLifecycleOwner, Observer { result ->
+            when (result) {
+                is ResultState.Loading -> {
+                    // Show loading indicator
+                }
+                is ResultState.Success -> {
+                    val items = result.data
+                    adapter.updateItems(items)
+                }
+                is ResultState.Error -> {
+                    // Handle the error state
+                    Log.e("SalesFragment", "Error fetching items: ${result.error}")
+                }
+                else -> {}
             }
         })
     }
+
 
     override fun onDestroyView() {
         super.onDestroyView()

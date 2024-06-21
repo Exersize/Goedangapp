@@ -6,7 +6,10 @@ import androidx.lifecycle.liveData
 import com.example.goedangapp.model.UserModel
 import com.example.goedangapp.response.AuthResponse
 import com.example.goedangapp.response.ItemDetailResponse
+import com.example.goedangapp.response.ItemEntryItem
+import com.example.goedangapp.response.ItemLastEntryResponseItem
 import com.example.goedangapp.response.ItemResponseItem
+import com.example.goedangapp.response.LastEntry
 import com.example.goedangapp.response.LoginResponse2
 import com.example.goedangapp.retrofit.ApiConfig
 import com.example.goedangapp.retrofit.ApiService
@@ -21,6 +24,37 @@ class GoedangRepo private constructor(
     private var apiService: ApiService,
     private val userPreference: UserPreference
 ) {
+
+    fun getItemLastEntryData(): LiveData<ResultState<List<CustomData>>> = liveData {
+        emit(ResultState.Loading)
+        try {
+            val response = apiService.getItemLastEntries()
+            // Check if response is not null and not empty
+            if (!response.isNullOrEmpty()) {
+                val customDataList = mutableListOf<CustomData>()
+                for (itemResponse in response) {
+                    // Extract data from each ItemLastEntryResponseItem
+                    val name = itemResponse.name ?: ""
+                    val total = itemResponse.lastEntry?.total ?: 0
+                    val measuringUnit = itemResponse.measuringUnit ?: ""
+                    val id = itemResponse.id ?: ""
+                    // Create CustomData object and add to the list
+                    val customData = CustomData(name, total, measuringUnit, id)
+                    customDataList.add(customData)
+                }
+                // Emit success state with the list of CustomData
+                emit(ResultState.Success(customDataList))
+            } else {
+                // If response is null or empty, emit error state
+                emit(ResultState.Error("Response is empty"))
+            }
+        } catch (e: Exception) {
+            // Emit error state if an exception occurs
+            emit(ResultState.Error(e.message ?: "An unknown error occurred"))
+        }
+    }
+
+
     fun getItemById(id: String): LiveData<ResultState<ItemDetailResponse>> = liveData {
         emit(ResultState.Loading)
         try{
@@ -55,6 +89,17 @@ class GoedangRepo private constructor(
                 it.quantity
             }
             emit(ResultState.Success(filteredItems))
+        } catch (e: HttpException) {
+            emit(ResultState.Error(e.toString()))
+        }
+    }
+
+    fun getItemEntriesById(id: String): LiveData<ResultState<List<ItemEntryItem>>> = liveData {
+        emit(ResultState.Loading)
+
+        try {
+            val response = apiService.getItemEntriesById(id)
+            emit(ResultState.Success(response))
         } catch (e: HttpException) {
             emit(ResultState.Error(e.toString()))
         }
@@ -96,7 +141,6 @@ class GoedangRepo private constructor(
         val user = userPreference.getUser().first()
         return user.userId
     }
-
 
     fun fetchItemName(): LiveData<ResultState<List<String>>> {
         return liveData {

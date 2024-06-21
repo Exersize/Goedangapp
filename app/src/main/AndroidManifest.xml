@@ -16,6 +16,9 @@
         android:theme="@style/Theme.Goedangapp"
         tools:targetApi="31">
         <activity
+            android:name=".ui.sales.SalesDetailActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.input.AddItemActivity"
             android:exported="false" />
         <activity
@@ -35,8 +38,8 @@
         </activity>
         <activity
             android:name=".ui.MainActivity"
-            android:windowSoftInputMode="adjustNothing"
-            android:exported="true" />
+            android:exported="true"
+            android:windowSoftInputMode="adjustNothing" />
     </application>
 
 </manifest>

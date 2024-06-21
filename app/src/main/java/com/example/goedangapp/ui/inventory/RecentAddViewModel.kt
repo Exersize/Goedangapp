@@ -11,4 +11,6 @@ class RecentAddViewModel(private val repo: GoedangRepo) : ViewModel() {
 
     val itemEntries: LiveData<ResultState<List<ItemEntryItem>>> = repo.filterRecentItemEntry()
 
+    fun getItemEntriesById(id: String) = repo.getItemEntriesById(id)
+
 }

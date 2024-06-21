@@ -50,6 +50,11 @@ interface ApiService {
     suspend fun getItemById(
         @Path("id") id: String
     ): ItemDetailResponse
+    @GET("item_entries/item/{id}")
+    suspend fun getItemEntriesById(
+        @Path("id") id: String
+    ): List<ItemEntryItem>
+
 
     @FormUrlEncoded
     @POST("item_entries")
@@ -65,6 +70,11 @@ interface ApiService {
     @GET( "item_entries")
     suspend fun getItemEntries(): List<ItemEntryItem>
 
+    @GET("items_with_last_entry")
+    suspend fun getItemLastEntries(): List<ItemLastEntryResponseItem>
+
     @GET("sales_overview")
     suspend fun getSalesOverview(): SalesOverviewResponse
+
+
 }

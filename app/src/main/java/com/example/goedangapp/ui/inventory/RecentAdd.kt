@@ -1,14 +1,13 @@
 package com.example.goedangapp.ui.inventory
 
-import androidx.fragment.app.viewModels
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.goedangapp.R
 import com.example.goedangapp.ViewModelFactory
 import com.example.goedangapp.databinding.FragmentRecentAddBinding
 import com.example.goedangapp.util.ResultState

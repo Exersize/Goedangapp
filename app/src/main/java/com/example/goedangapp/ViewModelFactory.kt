@@ -17,6 +17,8 @@ import com.example.goedangapp.ui.inventory.StockViewModel
 import com.example.goedangapp.ui.login.LoginViewModel
 import com.example.goedangapp.ui.profile.ProfileViewModel
 import com.example.goedangapp.ui.register.RegisterViewModel
+import com.example.goedangapp.ui.sales.FragmentSalesViewModel
+import com.example.goedangapp.ui.sales.SalesDetailViewModel
 import com.example.goedangapp.ui.splash.SplashScreenViewModel
 
 class ViewModelFactory (private val repository: GoedangRepo) :
@@ -63,6 +65,12 @@ class ViewModelFactory (private val repository: GoedangRepo) :
             }
             modelClass.isAssignableFrom(RecentAddViewModel::class.java) -> {
                 RecentAddViewModel(repository) as T
+            }
+            modelClass.isAssignableFrom(FragmentSalesViewModel::class.java) -> {
+                FragmentSalesViewModel(repository) as T
+            }
+            modelClass.isAssignableFrom(SalesDetailViewModel::class.java) -> {
+                SalesDetailViewModel(repository) as T
             }
 
 
