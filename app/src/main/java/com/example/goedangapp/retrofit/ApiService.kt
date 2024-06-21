@@ -5,13 +5,14 @@ import com.example.goedangapp.response.AuthResponse
 import com.example.goedangapp.response.ItemDetailResponse
 import com.example.goedangapp.response.ItemEntryItem
 import com.example.goedangapp.response.ItemEntryResponse
+import com.example.goedangapp.response.ItemLastEntryResponse
+import com.example.goedangapp.response.ItemLastEntryResponseItem
 import com.example.goedangapp.response.ItemResponseItem
-import com.example.goedangapp.response.LoginResponse
 import com.example.goedangapp.response.LoginResponse2
+import com.example.goedangapp.response.SalesOverviewResponse
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.GET
-import retrofit2.http.Header
 import retrofit2.http.POST
 import retrofit2.http.Path
 
@@ -63,4 +64,7 @@ interface ApiService {
 
     @GET( "item_entries")
     suspend fun getItemEntries(): List<ItemEntryItem>
+
+    @GET("sales_overview")
+    suspend fun getSalesOverview(): SalesOverviewResponse
 }
